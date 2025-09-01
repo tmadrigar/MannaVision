@@ -1,4 +1,8 @@
-# MannaVision 🎨✨
+<p align="center">
+  <img src="https://raw.githubusercontent.com/tmadrigar/MannaVision/main/public/logo_manna_vision.png" alt="MannaVision Logo" width="400">
+</p>
+
+<h1 align="center">MannaVision</h1>
 
 <p align="center">
   <strong>Desenhe no ar com suas mãos! Uma aplicação web interativa que transforma seus gestos em arte digital em tempo real.</strong>
@@ -20,7 +24,9 @@ O projeto foi desenvolvido como uma exploração das capacidades de interação 
 
 <br>
 
-![Demonstração do MannaVision em Ação](assets/mannavision_demo.gif)
+<p align="center">
+  <img src="https://raw.githubusercontent.com/tmadrigar/MannaVision/main/assets/mannavision_demo.gif" width="800" alt="Demonstração do MannaVision em Ação"/>
+</p>
 
 ---
 
@@ -65,25 +71,30 @@ Para executar este projeto em sua máquina, siga os passos abaixo.
 
 1.  **Clone o repositório:**
     ```bash
-    git clone https://github.com/tmadrigar/MannaVision.git
+    git clone [https://github.com/tmadrigar/MannaVision.git](https://github.com/tmadrigar/MannaVision.git)
     ```
 
 2.  **Navegue até o diretório do projeto:**
     ```bash
     cd MannaVision
     ```
+    
+3.  **Entre na pasta da aplicação:**
+    ```bash
+    cd handraw-pipe
+    ```
 
-3.  **Instale as dependências:**
+4.  **Instale as dependências:**
     ```bash
     npm install
     ```
 
-4.  **Inicie o servidor de desenvolvimento:**
+5.  **Inicie o servidor de desenvolvimento:**
     ```bash
     npm run dev
     ```
 
-5.  Abra seu navegador e acesse `http://localhost:5173` (ou a porta indicada no terminal).
+6.  Abra seu navegador e acesse `http://localhost:5173` (ou a porta indicada no terminal).
 
 ---
 
