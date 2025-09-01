@@ -1,6 +1,3 @@
-<p align="center">
-  <img src="https://raw.githubusercontent.com/tmadrigar/MannaVision/main/public/logo_manna_vision.png" alt="MannaVision Logo" width="400">
-</p>
 
 <h1 align="center">MannaVision</h1>
 
@@ -24,9 +21,7 @@ O projeto foi desenvolvido como uma exploração das capacidades de interação 
 
 <br>
 
-<p align="center">
-  <img src="https://raw.githubusercontent.com/tmadrigar/MannaVision/main/assets/mannavision_demo.gif" width="800" alt="Demonstração do MannaVision em Ação"/>
-</p>
+![Demonstração do MannaVision em Ação](assets/mannavision_demo.gif)
 
 ---
 
@@ -78,23 +73,18 @@ Para executar este projeto em sua máquina, siga os passos abaixo.
     ```bash
     cd MannaVision
     ```
-    
-3.  **Entre na pasta da aplicação:**
-    ```bash
-    cd handraw-pipe
-    ```
 
-4.  **Instale as dependências:**
+3.  **Instale as dependências:**
     ```bash
     npm install
     ```
 
-5.  **Inicie o servidor de desenvolvimento:**
+4.  **Inicie o servidor de desenvolvimento:**
     ```bash
     npm run dev
     ```
 
-6.  Abra seu navegador e acesse `http://localhost:5173` (ou a porta indicada no terminal).
+5.  Abra seu navegador e acesse `http://localhost:5173` (ou a porta indicada no terminal).
 
 ---
 
