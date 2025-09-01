@@ -34,7 +34,7 @@ O projeto foi desenvolvido como uma exploração das capacidades de interação 
 
 -   ✍️ **Desenho por Gestos**: Ative o pincel simplesmente unindo o polegar e o indicador.
 -   ✌️ **Suporte para Duas Mãos**: Detecta e rastreia até duas mãos simultaneamente, permitindo desenhar com ambas.
--   🎨 **5 Estilos de Pincel**: Escolha entre **Sólido**, **Brilhante**, **Spray**, **Tracejado** e o dinâmico **Psicodélico**.
+-   🎨 **5 Estilos de Pincel Criativos**: Escolha entre **Sólido**, **Brilhante**, **Spray**, **Tracejado** e o dinâmico **Psicodélico**.
 -   🎨 **Paleta de Cores e Ferramentas**: Controle total com seletor de cores, ajuste de espessura e modo borracha.
 -   🎨 **Temas de Interface**: Personalize a aparência da aplicação com 4 temas de cores (Roxo, Azul, Verde e Rosa).
 -   🖼️ **Salvar Criações**:
