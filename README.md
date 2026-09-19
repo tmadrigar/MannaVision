@@ -1,143 +1,216 @@
 <h1 align="center">MannaVision ✨</h1>
 
 <p align="center">
-  <strong>Desenhe no ar com suas mãos e transforme suas ideias em arte com IA! Uma aplicação web que une gestos humanos e criatividade artificial.</strong>
+  <strong>Interação gestual em tempo real: pinte no ar, controle o tempo e manipule fluidos apenas com as mãos — e transforme ideias em arte com IA.</strong>
 </p>
 
 <p align="center">
-  <img alt="Versão" src="https://img.shields.io/badge/version-2.0.0-blue?style=for-the-badge">
+  <img alt="Versão" src="https://img.shields.io/badge/version-3.0.0-blue?style=for-the-badge">
   <img alt="Licença" src="https://img.shields.io/badge/license-MIT-green?style=for-the-badge">
   <img alt="Frontend" src="https://img.shields.io/badge/frontend-React%20|%20TypeScript%20|%20Vite-D554C8?style=for-the-badge">
-  <img alt="Backend" src="https://img.shields.io/badge/backend-Python%20|%20Flask-blueviolet?style=for-the-badge">
+  <img alt="Backend" src="https://img.shields.io/badge/IA-Python%20|%20Flask%20|%20Hugging%20Face-blueviolet?style=for-the-badge">
 </p>
 
 ---
 
 ## 📖 Sobre o Projeto
 
-MannaVision é mais do que uma tela de pintura digital; é uma ponte entre a expressão humana e a geração de imagens por Inteligência Artificial. A aplicação começou como uma exploração da interação humano-computador, permitindo aos usuários desenhar de forma intuitiva usando gestos de mão rastreados em tempo real pela IA do **MediaPipe Hands**.
+MannaVision usa a webcam e o **MediaPipe Hands** (Google) para rastrear suas mãos em tempo real e transformá-las em instrumentos de interação. O projeto começou como uma tela de pintura gestual e hoje reúne **três experiências** num só hub:
 
-Agora, o projeto evoluiu. Além de ser uma ferramenta de desenho gestual, MannaVision integra um poderoso **módulo de IA Generativa**. Com um simples comando de texto, você pode transformar uma ideia ou inspiração em uma obra de arte única e detalhada, gerada pela IA da **Hugging Face**.
+| Modo | O que faz |
+| :--- | :--- |
+| 🎨 **MannaVision Paint** | Pinte no ar juntando polegar e indicador. Traços suaves em Neon, Fita, Caligrafia, Fagulhas e mais; caleidoscópio de até 12 eixos; tinta que evapora; desfazer/refazer; geração de arte com IA. |
+| ⏱️ **Control Time** | Segure o tempo entre os dedos: abra e feche a pinça para avançar e retroceder na linha do tempo de fenômenos (flor desabrochando, sistema solar, zoom infinito, foguete, som & guitarra) ou de um vídeo seu. |
+| 🌊 **Manipular o Fluido** | Mergulhe as mãos em um fluido simulado na GPU (Navier-Stokes em WebGL). Cada dedo empurra, agita e pinta a tinta; até 10 toques simultâneos com duas mãos. |
 
-<br>
-
-![Demonstração do MannaVision em Ação](assets/mannavision_demo.gif)  
-*(Nota: O GIF acima mostra a funcionalidade de desenho original. A nova funcionalidade de IA complementa esta experiência.)*
-
----
-
-## 🚀 Funcionalidades Principais
-
-### Ferramentas de Desenho Interativo
-- ✍️ **Desenho por Gestos**: Ative o pincel unindo o polegar e o indicador.
-- ✌️ **Suporte para Duas Mãos**: Detecta e rastreia até duas mãos simultaneamente.
-- 🎨 **5 Estilos de Pincel Criativos**: Escolha entre **Sólido**, **Brilhante**, **Spray**, **Tracejado** e o dinâmico **Psicodélico**.
-- 🎨 **Paleta de Cores e Ferramentas**: Controle total com seletor de cores, ajuste de espessura e modo borracha.
-- 🎨 **Temas de Interface**: Personalize a aparência com 4 temas (Roxo, Azul, Verde e Rosa).
-- 📋 **Modo Lousa**: Alterne para um fundo branco para uma experiência de desenho mais tradicional.
-
-### Módulo de IA Generativa
-- 🤖 **Geração de Arte com IA**: Clique no botão "Gerar Imagem com IA" para abrir um modal.
-- 📝 **Prompt de Texto**: Descreva a imagem que você deseja criar em um modal interativo no rodapé da tela.
-- 🖼️ **Visualização em Modal**: A imagem gerada pela IA aparece em um modal centralizado, com opções para fechar ou salvar.
-- 💾 **Salvar Arte da IA**: Baixe as criações da IA diretamente para o seu dispositivo.
-
-### Exportação
-- **Salvar Desenho**: Exporte apenas a sua arte gestual em `.png` com fundo transparente.
-- **Salvar Recordação**: Capture um "print" da tela, mesclando sua webcam, o desenho e a logo do MannaVision.
+![Demonstração do MannaVision em Ação](assets/mannavision_demo.gif)
 
 ---
 
-## 🛠️ Tecnologias Utilizadas
+## 🚀 Funcionalidades
 
-Este projeto combina um frontend moderno com um backend leve para se comunicar com APIs de IA.
+### 🎨 MannaVision Paint
+- **Desenho por pinça**: junte polegar e indicador para pintar, afaste para soltar. Duas mãos pintam ao mesmo tempo.
+- **Rastreamento robusto**: pinça normalizada pelo tamanho da mão (funciona perto ou longe da câmera), com histerese anti-tremor e sensibilidade ajustável.
+- **8 pincéis**: Sólido, **Neon**, **Fita** (espessura pela velocidade), **Caligrafia** (pena chanfrada), Psicodélico, **Fagulhas** (partículas vivas), Spray e Tracejado — todos com traço suavizado por curvas.
+- **Simetria**: espelho ou caleidoscópio de 4, 6, 8 ou 12 eixos.
+- **Tinta evanescente**: o traço desaparece aos poucos, como pintura de luz.
+- **Fundos**: webcam, lousa branca ou fundo escuro (neon fica espetacular).
+- **Desfazer / Refazer** (botões ou `Ctrl+Z` / `Ctrl+Y`), borracha, paleta de cores, espessura.
+- **IA generativa** (opcional): descreva uma imagem e receba uma obra gerada pela Hugging Face.
+- **Exportação**: salve só o desenho (PNG transparente) ou uma "recordação" com webcam + desenho + logo.
 
-| Categoria                 | Tecnologia         | Descrição                                                                 |
-| :------------------------ | :----------------- | :------------------------------------------------------------------------ |
-| **Frontend**              | **React**          | Biblioteca principal para a construção da interface do usuário.            |
-|                           | **TypeScript**     | Superset do JavaScript que adiciona tipagem estática.                      |
-|                           | **Vite**           | Ferramenta de build de nova geração para desenvolvimento web.              |
-|                           | **Tailwind CSS**   | Framework CSS utility-first para estilização rápida e moderna.             |
-| **Backend**               | **Python**         | Linguagem utilizada para criar o servidor que se comunica com a IA.        |
-|                           | **Flask**          | Micro-framework web para criar a API do backend de forma simples.          |
-| **Inteligência Artificial** | **MediaPipe Hands** | Solução do Google para rastreamento de mãos em tempo real.               |
-|                           | **Hugging Face API** | Plataforma que fornece acesso gratuito a modelos de IA Generativa.         |
-| **Ferramentas de Dev**    | **concurrently**   | Ferramenta para executar frontend e backend com um único comando.          |
+### ⏱️ Control Time
+- Progresso temporal controlado pela abertura da pinça (0% fechada → 100% aberta), bidirecional e sem latência.
+- Experiências incluídas: Flor Fantasia, Lançamento Espacial, Sistema Solar, Som & Guitarra (o volume acompanha a pinça) e Zoom Infinito.
+- Carregue **seu próprio vídeo** (.mp4/.webm) e navegue nele com a mão.
+- HUD com métricas de gesto e calibrador de suavização/deadzone.
+
+### 🌊 Manipular o Fluido
+- Simulação de fluidos em WebGL baseada no [WebGL Fluid Simulation](https://github.com/PavelDoGreat/WebGL-Fluid-Simulation) de Pavel Dobryakov (MIT).
+- **Modos de toque**: Cinco Dedos, Indicador, Pinça (agarra o fluido) e Palma (varre como uma onda).
+- **Cores**: arco-íris, cor do tema ou uma cor por mão.
+- Ajustes de força, raio, vorticidade, dissipação, bloom, raios de luz e qualidade (512p a 1024p+).
+- Atalhos: `Espaço` explosão de respingos, `C` limpar, `P` pausar.
+
+### Geral
+- Hub inicial com os 3 modos e 4 temas de interface (Roxo, Azul, Verde, Rosa).
+- Seleção de câmera, resolução (640p / 800p / 1280p) e espelhamento.
+- Tudo roda **localmente no navegador** — nenhuma imagem da sua câmera sai do computador (a IA generativa recebe apenas o texto do prompt).
 
 ---
 
-## ⚙️ Instalação e Execução Local
+## 🛠️ Tecnologias
 
-Para executar o projeto completo (Frontend + Backend + IA) em sua máquina, o processo foi unificado.
+| Categoria | Tecnologia | Uso |
+| :--- | :--- | :--- |
+| **Frontend** | React 18 + TypeScript | Interface e lógica dos modos |
+| | Vite | Dev server e build |
+| | Tailwind CSS | Estilização |
+| **Visão computacional** | MediaPipe Hands | Rastreamento de 21 pontos por mão, em tempo real, no navegador |
+| **Gráficos** | Canvas 2D | Motor de pincéis (`brushEngine.ts`), esqueleto da mão, efeitos |
+| | WebGL | Simulação de fluidos (`fluidSimulation.ts`) |
+| **IA generativa (opcional)** | Python + Flask | Servidor local que chama a API da Hugging Face |
+| | Hugging Face Inference API | Stable Diffusion XL |
+
+---
+
+## ⚙️ Instalação e Execução
 
 ### Pré-requisitos
-- [Node.js](https://nodejs.org/) (versão 16 ou superior)
-- [Python](https://www.python.org/downloads/) (versão 3.8 ou superior)
-- [Git](https://git-scm.com/)
+- **[Node.js](https://nodejs.org/)** versão 18 ou superior (LTS recomendada) — obrigatório.
+- **Webcam** e um navegador moderno (Chrome ou Edge recomendados; precisa de WebGL para o modo Fluido).
+- **[Python](https://www.python.org/downloads/)** 3.8+ — **apenas** se quiser a geração de imagens com IA.
+- **[Git](https://git-scm.com/)** para clonar o repositório.
 
-### Passos
+### 1. Clone o repositório
+```bash
+git clone https://github.com/tmadrigar/MannaVision.git
+cd MannaVision
+```
 
-1. **Clone o repositório:**
-    ```bash
-    git clone https://github.com/tmadrigar/MannaVision.git
-    cd MannaVision
-    ```
+### 2. Execute
 
-2. **Instale as dependências do Frontend:**
-    ```bash
-    npm install
-    ```
+#### 🪟 Windows — dois cliques
+Dê um duplo clique em **`iniciar.bat`** (ou rode no terminal). Ele:
+1. verifica se o Node.js está instalado;
+2. instala as dependências na primeira execução (`npm install`, inclui a cópia dos arquivos do MediaPipe);
+3. inicia o servidor de IA se existir um `handraw-pipe/.env` (veja abaixo);
+4. sobe o MannaVision e **abre o navegador automaticamente** em `http://localhost:5173`.
 
-3. **Configure o Backend em Python:**
-    * Crie e ative um ambiente virtual. Isso isola as dependências do seu projeto.
-    ```bash
-    # Cria o ambiente virtual
-    python -m venv .venv
+Para encerrar, feche a janela ou pressione `Ctrl+C`.
 
-    # Ativa o ambiente (Windows - PowerShell)
-    .\.venv\Scripts\Activate.ps1
+> Dica: crie um atalho de `iniciar.bat` na área de trabalho para ter o MannaVision a um clique.
 
-    # Ativa o ambiente (macOS/Linux)
-    source .venv/bin/activate
-    ```
-    * Crie um arquivo chamado `requirements.txt` na raiz do projeto e adicione o seguinte conteúdo:
-    ```txt
-    Flask
-    flask-cors
-    requests
-    python-dotenv
-    ```
-    * Instale as dependências do Python:
-    ```bash
-    pip install -r requirements.txt
-    ```
+#### 🍎 macOS / 🐧 Linux
+```bash
+chmod +x iniciar.sh   # só na primeira vez
+./iniciar.sh
+```
 
-4. **Configure sua Chave de API da Hugging Face:**
-    * Crie uma conta gratuita em [huggingface.co](https://huggingface.co) e gere um **Access Token** com permissão **`write`**.
-    * Na raiz do projeto, crie um arquivo chamado `.env`.
-    * Dentro do arquivo `.env`, adicione a seguinte linha, substituindo pela sua chave:
-    ```env
-    HUGGING_FACE_TOKEN="hf_suaChaveComPermissaoWriteAqui"
-    ```
-    * Para garantir que o `app.py` carregue esta chave, adicione estas duas linhas no topo do arquivo `app.py`:
-    ```python
-    from dotenv import load_dotenv
-    load_dotenv()
-    ```
+#### Manualmente (qualquer sistema)
+```bash
+cd handraw-pipe
+npm install        # também copia o MediaPipe para public/mediapipe/hands
+npm run dev:open   # abre http://localhost:5173 no navegador
+```
 
-5. **Inicie TUDO com um único comando:**
-    ```bash
-    npm start
-    ```
-    Este comando usará o `concurrently` para iniciar o servidor de frontend do Vite e o servidor de backend do Flask ao mesmo tempo, no mesmo terminal.
+### 3. (Opcional) Ativar a geração de imagens com IA
+O botão **"Gerar Imagem com IA"** do Paint usa um pequeno servidor Python que chama a Hugging Face.
 
-6. **Abra o MannaVision:**
-    Abra seu navegador e acesse `http://localhost:5173` (ou a porta indicada no terminal).
+1. Crie uma conta gratuita em [huggingface.co](https://huggingface.co) e gere um **Access Token** em *Settings → Access Tokens* (permissão `write`).
+2. Copie `handraw-pipe/.env.example` para `handraw-pipe/.env` e coloque seu token:
+   ```env
+   HUGGING_FACE_TOKEN=hf_seu_token_aqui
+   ```
+3. Execute `iniciar.bat` / `iniciar.sh` normalmente — ele detecta o `.env`, cria o ambiente virtual Python, instala `requirements.txt` e sobe o servidor em `http://127.0.0.1:5000` numa janela separada.
+
+Manualmente:
+```bash
+cd handraw-pipe
+python -m venv .venv
+.venv\Scripts\activate          # Windows   |   source .venv/bin/activate  (macOS/Linux)
+pip install -r requirements.txt
+python app.py
+```
+
+> O arquivo `.env` está no `.gitignore` — seu token nunca vai para o repositório.
 
 ---
+
+## 🧭 Como usar
+
+1. No hub, escolha um dos três modos.
+2. Permita o acesso à câmera quando o navegador pedir.
+3. Posicione a mão aberta a ~40–80 cm da câmera, com boa iluminação. O esqueleto da mão aparece em ciano (segunda mão em magenta).
+4. **Paint**: junte polegar e indicador para pintar. **Control Time**: abra/feche a pinça para avançar/voltar. **Fluido**: mova os dedos sobre a tela.
+5. Use o botão **Hub Principal** para trocar de modo.
+
+---
+
+## 📂 Estrutura do projeto
+
+```
+MannaVision/
+├── iniciar.bat / iniciar.sh        # lançadores (instalam e executam tudo)
+├── handraw-pipe/                   # aplicação web
+│   ├── src/
+│   │   ├── App.tsx                 # roteamento entre hub e modos
+│   │   ├── components/
+│   │   │   ├── HomeHub.tsx         # tela inicial
+│   │   │   ├── HandDrawingApp.tsx  # MannaVision Paint
+│   │   │   ├── ControlTimeApp.tsx  # Control Time
+│   │   │   └── FluidApp.tsx        # Manipular o Fluido
+│   │   └── utils/
+│   │       ├── brushEngine.ts      # pincéis, simetria, partículas
+│   │       ├── fluidSimulation.ts  # simulação de fluidos em WebGL
+│   │       ├── gestureInterpreter.ts # normalização/suavização da pinça
+│   │       └── timeExperiences.ts  # catálogo de experiências temporais
+│   ├── public/
+│   │   ├── experiences/            # sequências de frames do Control Time
+│   │   ├── audio/                  # trilhas
+│   │   ├── fluid/                  # textura de dithering do bloom
+│   │   └── mediapipe/              # gerado no npm install (não versionado)
+│   ├── scripts/setup-mediapipe.mjs # copia o MediaPipe de node_modules
+│   ├── app.py                      # servidor de IA (Flask)
+│   ├── requirements.txt / .env.example
+│   └── vite.config.ts              # inclui o workaround de bundling do MediaPipe
+├── scripts/extract_frames.py       # gera sequências de frames a partir de vídeos
+└── assets/                         # imagens do README
+```
+
+### Scripts úteis (`handraw-pipe/`)
+| Comando | Descrição |
+| :--- | :--- |
+| `npm run dev` / `npm run dev:open` | Servidor de desenvolvimento (com/sem abrir o navegador) |
+| `npm run build` | Checagem de tipos + build de produção em `dist/` |
+| `npm run preview` | Serve o build de produção |
+| `npm run typecheck` | Só a checagem de tipos |
+| `npm run setup:mediapipe` | Recopia os arquivos do MediaPipe para `public/` |
+| `npm start` | Frontend + servidor de IA no mesmo terminal (`concurrently`) |
+
+---
+
+## 🩺 Problemas comuns
+
+| Sintoma | Causa provável / solução |
+| :--- | :--- |
+| "Não foi possível acessar a câmera" | Outra aplicação (ou outra aba) está usando a webcam. Feche-a e clique em **Tentar Novamente**. |
+| A mão não é detectada | Melhore a iluminação, aproxime a mão (~50 cm) e mostre a palma para a câmera. Tente a resolução 800p. |
+| Pinça dispara sozinha / não dispara | No Paint, ajuste **Sensibilidade da pinça**; no Control Time, use o **Calibrador**. |
+| Modo Fluido diz "WebGL não é suportado" | Ative a aceleração de hardware do navegador ou atualize o driver de vídeo. |
+| Botão de IA retorna erro | Verifique o `.env`, se o servidor Python está rodando (janela "Servidor de IA") e se o token tem permissão `write`. O modelo pode levar ~20 s para "acordar" na primeira chamada. |
+| `npm install` falhou | Confirme Node ≥ 18 (`node -v`) e a conexão com a internet; apague `node_modules` e tente de novo. |
+
+---
+
+## 🙏 Créditos
+- [MediaPipe Hands](https://developers.google.com/mediapipe) — Google.
+- [WebGL Fluid Simulation](https://github.com/PavelDoGreat/WebGL-Fluid-Simulation) — Pavel Dobryakov (MIT), base do modo Fluido.
+- [Hugging Face](https://huggingface.co) — API de inferência para a geração de imagens.
 
 ## ✍️ Autor
 
-**tmadrigar**
+**Tiago Madrigar** — [tmadrigar](https://github.com/tmadrigar)
 
 Sinta-se à vontade para entrar em contato ou contribuir com o projeto!

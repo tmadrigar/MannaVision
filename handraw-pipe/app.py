@@ -5,22 +5,22 @@ import os
 import base64
 from io import BytesIO
 
-# --- PLANO B: COLOQUE SUA CHAVE DA HUGGING FACE AQUI ---
-# Substitua pela sua chave que começa com "hf_..."
-# Esta é a maneira mais fácil de garantir que funcione.
-os.environ["HUGGING_FACE_TOKEN"] = "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"
-# ----------------------------------------------------
+# Carrega variáveis do arquivo .env (HUGGING_FACE_TOKEN). Veja .env.example.
+try:
+    from dotenv import load_dotenv
+    load_dotenv()
+except ImportError:
+    pass  # python-dotenv é opcional; a variável de ambiente também pode vir do sistema
 
-# --- CÓDIGO DE DEBUG ---
 api_token = os.getenv("HUGGING_FACE_TOKEN")
 print("=================================================")
-print("--- VERIFICANDO TOKEN DA API HUGGING FACE ---")
+print("--- SERVIDOR DE IA DO MANNAVISION (Hugging Face) ---")
 if api_token:
-    print(f"--- SUCESSO: Token encontrado! Começa com: {api_token[:5]}...")
+    print(f"--- Token encontrado (comeca com {api_token[:5]}...). Geracao de imagens ativa.")
 else:
-    print("--- FALHA: Token NÃO FOI ENCONTRADO! Coloque a chave no código acima.")
+    print("--- Token NAO encontrado. Crie o arquivo .env com HUGGING_FACE_TOKEN=hf_...")
+    print("--- (o desenho gestual funciona normalmente sem o token)")
 print("=================================================")
-# --- FIM DO CÓDIGO DE DEBUG ---
 
 
 app = Flask(__name__)

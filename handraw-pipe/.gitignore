@@ -23,3 +23,12 @@ dist-ssr
 *.sln
 *.sw?
 .env
+
+# Ambiente virtual Python do servidor de IA
+.venv/
+
+# Copiado de node_modules/@mediapipe/hands pelo scripts/setup-mediapipe.mjs
+public/mediapipe/
+
+# Cache incremental do TypeScript
+*.tsbuildinfo

@@ -31,3 +31,16 @@ dist-ssr
 # Arquivos de configuração de IDEs
 .idea/
 .vscode/
+# Ambientes virtuais Python
+.venv/
+venv/
+
+# Arquivos do MediaPipe Hands: copiados de node_modules no `npm install` (postinstall)
+handraw-pipe/public/mediapipe/
+
+# Videos/audios brutos usados para gerar as experiencias (nao fazem parte do app)
+/*.mp4
+/*.mp3
+
+# Sequencia de frames nao usada pelo app (saida antiga do extract_frames.py)
+handraw-pipe/public/experiences/flower/
