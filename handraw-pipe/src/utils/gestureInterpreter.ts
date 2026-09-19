@@ -20,6 +20,8 @@ export interface GestureData {
   thumbTip: Point3D | null;
   indexTip: Point3D | null;
   wrist: Point3D | null;
+  handCenter?: { x: number; y: number };
+  handAngle?: number;
 }
 
 export interface GestureInterpreterConfig {
@@ -131,6 +133,15 @@ export class GestureInterpreter {
     this.previousSmoothedProgress = finalProgress;
     this.lastValidProgress = finalProgress;
 
+    // 7. Centro da mão/pinça e orientação angular (roll) para perspectiva 3D
+    const handCenter = {
+      x: (thumbTip.x + indexTip.x) / 2,
+      y: (thumbTip.y + indexTip.y) / 2,
+    };
+    const dx = middleMCP.x - wrist.x;
+    const dy = middleMCP.y - wrist.y;
+    const handAngle = (Math.atan2(dy, dx) * 180) / Math.PI + 90;
+
     return {
       handDetected: true,
       rawPinchDistance,
@@ -140,6 +151,8 @@ export class GestureInterpreter {
       thumbTip,
       indexTip,
       wrist,
+      handCenter,
+      handAngle,
     };
   }
 

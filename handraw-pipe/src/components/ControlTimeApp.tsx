@@ -8,6 +8,7 @@ import {
 } from 'lucide-react';
 import { GestureInterpreter, GestureData, DEFAULT_GESTURE_CONFIG } from '../utils/gestureInterpreter';
 import { TIME_EXPERIENCES, TimeExperience } from '../utils/timeExperiences';
+import { AnimeExperienceInstance } from '../utils/vectorAnimeExperience';
 import { RESOLUTION_PRESETS } from './HandDrawingApp';
 
 type ThemeColor = 'purple' | 'blue' | 'green' | 'pink';
@@ -59,6 +60,9 @@ const ControlTimeApp: React.FC<ControlTimeAppProps> = ({ onBackToHub }) => {
   const videoRef = useRef<HTMLVideoElement>(null);
   const pipCanvasRef = useRef<HTMLCanvasElement>(null);
   const stageCanvasRef = useRef<HTMLCanvasElement>(null);
+  const animeContainerRef = useRef<HTMLDivElement>(null);
+  const animeInstanceRef = useRef<AnimeExperienceInstance | null>(null);
+  const perspectiveRef = useRef({ rotateX: 0, rotateY: 0, rotateZ: 0, scale: 1 });
   const userVideoRef = useRef<HTMLVideoElement>(null);
   const handsRef = useRef<Hands | null>(null);
   const streamRef = useRef<MediaStream | null>(null);
@@ -316,6 +320,29 @@ const ControlTimeApp: React.FC<ControlTimeAppProps> = ({ onBackToHub }) => {
     }
   }, [selectedExperience]);
 
+  // --- INICIALIZAÇÃO E MONTAGEM DA EXPERIÊNCIA VETORIAL ANIME.JS ---
+  useEffect(() => {
+    if (selectedExperience.type === 'anime' && selectedExperience.createAnimeInstance && animeContainerRef.current) {
+      if (animeInstanceRef.current?.destroy) {
+        animeInstanceRef.current.destroy();
+      }
+      animeInstanceRef.current = selectedExperience.createAnimeInstance(animeContainerRef.current);
+      animeInstanceRef.current.seek(timelineProgress);
+    } else {
+      if (animeInstanceRef.current?.destroy) {
+        animeInstanceRef.current.destroy();
+        animeInstanceRef.current = null;
+      }
+    }
+
+    return () => {
+      if (animeInstanceRef.current?.destroy) {
+        animeInstanceRef.current.destroy();
+        animeInstanceRef.current = null;
+      }
+    };
+  }, [selectedExperience]);
+
   // --- RENDERIZAÇÃO DA EXPERIÊNCIA PRINCIPAL ---
   useEffect(() => {
     if (selectedExperience.type === 'frame_sequence') {
@@ -366,8 +393,39 @@ const ControlTimeApp: React.FC<ControlTimeAppProps> = ({ onBackToHub }) => {
           userVideo.currentTime = targetTime;
         }
       }
+    } else if (selectedExperience.type === 'anime') {
+      if (animeInstanceRef.current) {
+        animeInstanceRef.current.seek(timelineProgress);
+
+        // Atualizar perspectiva 3D holográfica em função da posição e rotação da mão
+        if (gestureData.handDetected && gestureData.handCenter) {
+          // Espelhar X para responder intuitivamente à imagem espelhada da webcam
+          const normX = isMirrorRef.current ? (1 - gestureData.handCenter.x) : gestureData.handCenter.x;
+          // Ângulos de inclinação orbital (±28 graus de amplitude)
+          const targetRotY = (normX - 0.5) * 56;
+          const targetRotX = -(gestureData.handCenter.y - 0.5) * 56;
+          const targetRotZ = (gestureData.handAngle || 0) * 0.35;
+
+          // Suavização exponencial contínua
+          perspectiveRef.current.rotateX += (targetRotX - perspectiveRef.current.rotateX) * 0.3;
+          perspectiveRef.current.rotateY += (targetRotY - perspectiveRef.current.rotateY) * 0.3;
+          perspectiveRef.current.rotateZ += (targetRotZ - perspectiveRef.current.rotateZ) * 0.3;
+        } else {
+          // Retornar suavemente para o repouso centralizado
+          perspectiveRef.current.rotateX += (0 - perspectiveRef.current.rotateX) * 0.15;
+          perspectiveRef.current.rotateY += (0 - perspectiveRef.current.rotateY) * 0.15;
+          perspectiveRef.current.rotateZ += (0 - perspectiveRef.current.rotateZ) * 0.15;
+        }
+
+        animeInstanceRef.current.updatePerspective({
+          rotateX: perspectiveRef.current.rotateX,
+          rotateY: perspectiveRef.current.rotateY,
+          rotateZ: perspectiveRef.current.rotateZ,
+          scale: 1,
+        });
+      }
     }
-  }, [timelineProgress, selectedExperience, isVideoLoaded, videoDuration, framesReady, isFramesLoading]);
+  }, [timelineProgress, gestureData, selectedExperience, isVideoLoaded, videoDuration, framesReady, isFramesLoading]);
 
   // Redimensionar canvas quando a janela mudar
   useEffect(() => {
@@ -741,6 +799,14 @@ const ControlTimeApp: React.FC<ControlTimeAppProps> = ({ onBackToHub }) => {
           <canvas
             ref={stageCanvasRef}
             className="w-full h-full object-contain pointer-events-none"
+          />
+        )}
+
+        {/* Renderizador de Experiência Vetorial com Anime.js */}
+        {selectedExperience.type === 'anime' && (
+          <div
+            ref={animeContainerRef}
+            className="w-full h-full flex items-center justify-center pointer-events-none select-none"
           />
         )}
 

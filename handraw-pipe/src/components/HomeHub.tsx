@@ -140,8 +140,8 @@ const HomeHub: React.FC<HomeHubProps> = ({ onSelectMode, themeColor, setThemeCol
                   <Clock className="w-7 h-7 text-white" />
                 </div>
                 <span className="text-[11px] font-semibold px-2.5 py-1 rounded-full bg-cyan-500/20 text-cyan-300 border border-cyan-500/30 flex items-center space-x-1">
-                  <Zap className="w-3 h-3 mr-1" />
-                  <span>Novo Modo</span>
+                  <Zap className="w-3 h-3 mr-1 text-cyan-400 animate-pulse" />
+                  <span>Anime.js + Vídeo</span>
                 </span>
               </div>
 
@@ -149,26 +149,34 @@ const HomeHub: React.FC<HomeHubProps> = ({ onSelectMode, themeColor, setThemeCol
                 Control Time
               </h2>
               <p className="text-xs sm:text-sm text-gray-300 mb-6 leading-relaxed">
-                Segure o tempo entre os seus dedos. Abra e feche a pinça das mãos para avançar e retroceder livremente na linha do tempo de fenômenos naturais, espaciais e vídeos.
+                Segure o tempo entre os seus dedos. Abra e feche a pinça das mãos para avançar e retroceder livremente na linha do tempo de fenômenos naturais, espaciais, vídeos e animações vetoriais Anime.js.
               </p>
 
               {/* Destaques */}
               <div className="grid grid-cols-2 gap-2 text-xs text-gray-300 mb-6">
-                <div className="flex items-center space-x-2 bg-white/5 p-2 rounded-lg">
-                  <span className="text-base">🌺</span>
-                  <span>Flor Fantasia</span>
+                <div className="flex items-center space-x-2 bg-cyan-500/20 border border-cyan-400/40 p-2 rounded-lg text-cyan-200 font-medium">
+                  <span className="text-base">⚡</span>
+                  <span>Cronógrafo 3D</span>
                 </div>
-                <div className="flex items-center space-x-2 bg-white/5 p-2 rounded-lg">
-                  <span className="text-base">🎸</span>
-                  <span>Som & Guitarra</span>
+                <div className="flex items-center space-x-2 bg-cyan-500/20 border border-cyan-400/40 p-2 rounded-lg text-cyan-200 font-medium">
+                  <span className="text-base">🚀</span>
+                  <span>Foguete CAD 3D</span>
                 </div>
-                <div className="flex items-center space-x-2 bg-white/5 p-2 rounded-lg">
-                  <span className="text-base">🪐</span>
-                  <span>Sistema Solar</span>
+                <div className="flex items-center space-x-2 bg-cyan-500/20 border border-cyan-400/40 p-2 rounded-lg text-cyan-200 font-medium">
+                  <span className="text-base">🏛️</span>
+                  <span>Blueprint Laser</span>
                 </div>
-                <div className="flex items-center space-x-2 bg-white/5 p-2 rounded-lg">
-                  <span className="text-base">🔍</span>
-                  <span>Zoom Infinito</span>
+                <div className="flex items-center space-x-2 bg-cyan-500/20 border border-cyan-400/40 p-2 rounded-lg text-cyan-200 font-medium">
+                  <span className="text-base">🧬</span>
+                  <span>Escala Cósmica</span>
+                </div>
+                <div className="flex items-center space-x-2 bg-cyan-500/20 border border-cyan-400/40 p-2 rounded-lg text-cyan-200 font-medium">
+                  <span className="text-base">⌚</span>
+                  <span>Tourbillon Suíço</span>
+                </div>
+                <div className="flex items-center space-x-2 bg-cyan-500/20 border border-cyan-400/40 p-2 rounded-lg text-cyan-200 font-medium">
+                  <span className="text-base">🤖</span>
+                  <span>JARVIS HUD 3D</span>
                 </div>
               </div>
             </div>
