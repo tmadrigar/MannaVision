@@ -44,3 +44,6 @@ handraw-pipe/public/mediapipe/
 
 # Sequencia de frames nao usada pelo app (saida antiga do extract_frames.py)
 handraw-pipe/public/experiences/flower/
+
+# Vídeos brutos selecionados para o Cubo do Tempo (versões web ficam em handraw-pipe/public/timecube)
+/VIDEOS/

@@ -80,6 +80,11 @@ echo [3/3] Iniciando o MannaVision em http://localhost:5173 ...
 echo        O navegador sera aberto automaticamente.
 echo        Para encerrar, feche esta janela ou pressione Ctrl+C.
 echo.
-call npx vite --open --port 5173 --strictPort
+call npm run dev:open
+if errorlevel 1 (
+    echo.
+    echo [AVISO] O servidor foi finalizado ou ocorreu um erro.
+    pause
+)
 
 endlocal

@@ -7,9 +7,12 @@ import HomeHub from './components/HomeHub';
 import HandDrawingApp from './components/HandDrawingApp';
 import ControlTimeApp from './components/ControlTimeApp';
 import FluidApp from './components/FluidApp';
+import TimeCubeApp from './components/TimeCubeApp';
+import AirHarpApp from './components/AirHarpApp';
+import XRayMirrorApp from './components/XRayMirrorApp';
 
 type ThemeColor = 'purple' | 'blue' | 'green' | 'pink';
-type AppMode = 'hub' | 'draw' | 'control_time' | 'fluid';
+type AppMode = 'hub' | 'draw' | 'control_time' | 'fluid' | 'timecube' | 'harp' | 'xray';
 
 interface ErrorBoundaryProps {
   children: React.ReactNode;
@@ -82,7 +85,7 @@ function App() {
           .theme-pink { --bg-from: #831843; --bg-to: #7a153d; --main: #EC4899; --light: #f472b6; --dark: #be185d; --text: #f9a8d4; --border: #db2777; }
         `}</style>
 
-        {/* Hub Inicial com seleção dos 3 modos */}
+        {/* Hub Inicial com seleção dos modos */}
         {currentMode === 'hub' && (
           <HomeHub
             onSelectMode={(mode) => setCurrentMode(mode)}
@@ -112,6 +115,33 @@ function App() {
         {/* Modo 3: Manipular o Fluido (Simulação WebGL controlada pelos dedos) */}
         {currentMode === 'fluid' && (
           <FluidApp
+            onBackToHub={() => setCurrentMode('hub')}
+            themeColor={themeColor}
+            setThemeColor={setThemeColor}
+          />
+        )}
+
+        {/* Modo 4: Cubo do Tempo (vídeo como volume 3D girado com as duas mãos) */}
+        {currentMode === 'timecube' && (
+          <TimeCubeApp
+            onBackToHub={() => setCurrentMode('hub')}
+            themeColor={themeColor}
+            setThemeColor={setThemeColor}
+          />
+        )}
+
+        {/* Modo 5: Harpa de Luz (cordas de luz esticadas no ar e tocadas com os dedos) */}
+        {currentMode === 'harp' && (
+          <AirHarpApp
+            onBackToHub={() => setCurrentMode('hub')}
+            themeColor={themeColor}
+            setThemeColor={setThemeColor}
+          />
+        )}
+
+        {/* Modo 6: Espelho Raio-X (anatomia 3D presa ao rosto e ossos da mão) */}
+        {currentMode === 'xray' && (
+          <XRayMirrorApp
             onBackToHub={() => setCurrentMode('hub')}
             themeColor={themeColor}
             setThemeColor={setThemeColor}

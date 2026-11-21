@@ -1,0 +1,11 @@
+Modelos anatômicos do Espelho Raio-X
+
+BodyParts3D, © The Database Center for Life Science, licenciado sob
+Creative Commons Attribution 4.0 International (CC BY 4.0).
+https://dbarchive.biosciencedbc.jp/en/bodyparts3d/
+
+Alterações feitas pelo MannaVision: seleção de peças, simplificação das malhas,
+mudança de escala e alinhamento ao modelo de rosto do MediaPipe
+(scripts/build_xray_anatomy.py).
+
+face_mesh.json: canonical_face_model.obj do MediaPipe (Google), Apache License 2.0.

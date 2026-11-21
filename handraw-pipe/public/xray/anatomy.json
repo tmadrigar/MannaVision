@@ -1,0 +1,775 @@
+{
+ "source": "BodyParts3D, © The Database Center for Life Science, CC BY 4.0 (malhas simplificadas e realinhadas)",
+ "units": "cm, espaço do canonical face model do MediaPipe",
+ "jawPivot": [
+  0.078,
+  0.667,
+  -4.549
+ ],
+ "eyeCenters": {
+  "eyeL": [
+   3.544,
+   2.552,
+   2.387
+  ],
+  "eyeR": [
+   -3.376,
+   2.548,
+   2.402
+  ]
+ },
+ "parts": [
+  {
+   "key": "frontal",
+   "layer": "skull",
+   "group": "head",
+   "label": "Osso frontal",
+   "anchor": [
+    4.186,
+    6.153,
+    2.804
+   ],
+   "tris": 6999
+  },
+  {
+   "key": "parietalL",
+   "layer": "skull",
+   "group": "head",
+   "label": "Osso parietal",
+   "anchor": [
+    7.254,
+    11.659,
+    -6.602
+   ],
+   "tris": 5999
+  },
+  {
+   "key": "parietalR",
+   "layer": "skull",
+   "group": "head",
+   "label": "Osso parietal",
+   "anchor": [
+    -7.654,
+    10.23,
+    -5.625
+   ],
+   "tris": 5999
+  },
+  {
+   "key": "occipital",
+   "layer": "skull",
+   "group": "head",
+   "label": "Osso occipital",
+   "anchor": [
+    6.522,
+    3.555,
+    -12.105
+   ],
+   "tris": 6000
+  },
+  {
+   "key": "temporalL",
+   "layer": "skull",
+   "group": "head",
+   "label": "Osso temporal",
+   "anchor": [
+    7.108,
+    1.857,
+    -3.597
+   ],
+   "tris": 3499
+  },
+  {
+   "key": "temporalR",
+   "layer": "skull",
+   "group": "head",
+   "label": "Osso temporal",
+   "anchor": [
+    -7.185,
+    1.686,
+    -3.683
+   ],
+   "tris": 3500
+  },
+  {
+   "key": "sphenoid",
+   "layer": "skull",
+   "group": "head",
+   "label": "Esfenoide",
+   "anchor": [
+    2.162,
+    2.235,
+    -1.213
+   ],
+   "tris": 4500
+  },
+  {
+   "key": "ethmoid",
+   "layer": "skull",
+   "group": "head",
+   "label": null,
+   "anchor": [
+    1.306,
+    1.293,
+    2.069
+   ],
+   "tris": 2500
+  },
+  {
+   "key": "zygomaticL",
+   "layer": "skull",
+   "group": "head",
+   "label": "Osso zigomático",
+   "anchor": [
+    6.447,
+    0.532,
+    1.448
+   ],
+   "tris": 1200
+  },
+  {
+   "key": "zygomaticR",
+   "layer": "skull",
+   "group": "head",
+   "label": "Osso zigomático",
+   "anchor": [
+    -5.808,
+    0.462,
+    2.315
+   ],
+   "tris": 1199
+  },
+  {
+   "key": "maxillaL",
+   "layer": "skull",
+   "group": "head",
+   "label": "Maxila",
+   "anchor": [
+    3.668,
+    -0.965,
+    3.254
+   ],
+   "tris": 3000
+  },
+  {
+   "key": "maxillaR",
+   "layer": "skull",
+   "group": "head",
+   "label": "Maxila",
+   "anchor": [
+    -3.627,
+    -1.01,
+    3.235
+   ],
+   "tris": 3000
+  },
+  {
+   "key": "nasal",
+   "layer": "skull",
+   "group": "head",
+   "label": "Osso nasal",
+   "anchor": [
+    -0.649,
+    2.099,
+    5.66
+   ],
+   "tris": 500
+  },
+  {
+   "key": "small",
+   "layer": "skull",
+   "group": "head",
+   "label": null,
+   "anchor": [
+    1.752,
+    -0.711,
+    2.027
+   ],
+   "tris": 2500
+  },
+  {
+   "key": "teethUp",
+   "layer": "skull",
+   "group": "head",
+   "label": "Dentes",
+   "anchor": [
+    2.324,
+    -3.432,
+    4.407
+   ],
+   "tris": 5000
+  },
+  {
+   "key": "mandible",
+   "layer": "skull",
+   "group": "jaw",
+   "label": "Mandíbula",
+   "anchor": [
+    4.398,
+    -4.718,
+    0.888
+   ],
+   "tris": 4999
+  },
+  {
+   "key": "teethLow",
+   "layer": "skull",
+   "group": "jaw",
+   "label": null,
+   "anchor": [
+    1.945,
+    -5.789,
+    3.988
+   ],
+   "tris": 4999
+  },
+  {
+   "key": "frontalLobeL",
+   "layer": "brain",
+   "group": "head",
+   "label": "Lobo frontal",
+   "anchor": [
+    5.74,
+    10.343,
+    -0.68
+   ],
+   "tris": 4499
+  },
+  {
+   "key": "frontalLobeR",
+   "layer": "brain",
+   "group": "head",
+   "label": null,
+   "anchor": [
+    -5.575,
+    10.351,
+    -0.673
+   ],
+   "tris": 4500
+  },
+  {
+   "key": "motorL",
+   "layer": "brain",
+   "group": "head",
+   "label": null,
+   "anchor": [
+    6.241,
+    11.753,
+    -6.945
+   ],
+   "tris": 2499
+  },
+  {
+   "key": "motorR",
+   "layer": "brain",
+   "group": "head",
+   "label": "Córtex motor",
+   "anchor": [
+    -5.793,
+    11.889,
+    -6.361
+   ],
+   "tris": 2499
+  },
+  {
+   "key": "parietalLobeL",
+   "layer": "brain",
+   "group": "head",
+   "label": "Lobo parietal",
+   "anchor": [
+    5.926,
+    9.972,
+    -10.973
+   ],
+   "tris": 3500
+  },
+  {
+   "key": "parietalLobeR",
+   "layer": "brain",
+   "group": "head",
+   "label": null,
+   "anchor": [
+    -5.705,
+    9.115,
+    -10.691
+   ],
+   "tris": 3499
+  },
+  {
+   "key": "temporalLobeL",
+   "layer": "brain",
+   "group": "head",
+   "label": null,
+   "anchor": [
+    6.951,
+    4.144,
+    -5.563
+   ],
+   "tris": 2999
+  },
+  {
+   "key": "temporalLobeR",
+   "layer": "brain",
+   "group": "head",
+   "label": "Lobo temporal",
+   "anchor": [
+    -6.457,
+    4.472,
+    -5.194
+   ],
+   "tris": 2999
+  },
+  {
+   "key": "occipitalLobeL",
+   "layer": "brain",
+   "group": "head",
+   "label": "Lobo occipital",
+   "anchor": [
+    3.292,
+    4.682,
+    -12.163
+   ],
+   "tris": 1500
+  },
+  {
+   "key": "occipitalLobeR",
+   "layer": "brain",
+   "group": "head",
+   "label": null,
+   "anchor": [
+    -3.626,
+    4.189,
+    -13.005
+   ],
+   "tris": 1499
+  },
+  {
+   "key": "deepBrain",
+   "layer": "brain",
+   "group": "head",
+   "label": null,
+   "anchor": [
+    3.814,
+    8.005,
+    -5.091
+   ],
+   "tris": 6000
+  },
+  {
+   "key": "cerebellum",
+   "layer": "brain",
+   "group": "head",
+   "label": "Cerebelo",
+   "anchor": [
+    1.267,
+    2.038,
+    -7.941
+   ],
+   "tris": 5000
+  },
+  {
+   "key": "brainstem",
+   "layer": "brain",
+   "group": "head",
+   "label": "Tronco encefálico",
+   "anchor": [
+    1.511,
+    1.663,
+    -5.274
+   ],
+   "tris": 3000
+  },
+  {
+   "key": "scleraL",
+   "layer": "eyes",
+   "group": "eyeL",
+   "label": "Globo ocular",
+   "anchor": [
+    4.928,
+    2.537,
+    2.534
+   ],
+   "tris": 898
+  },
+  {
+   "key": "scleraR",
+   "layer": "eyes",
+   "group": "eyeR",
+   "label": null,
+   "anchor": [
+    -4.358,
+    1.606,
+    2.11
+   ],
+   "tris": 899
+  },
+  {
+   "key": "corneaL",
+   "layer": "eyes",
+   "group": "eyeL",
+   "label": null,
+   "anchor": [
+    4.084,
+    2.589,
+    3.921
+   ],
+   "tris": 299
+  },
+  {
+   "key": "corneaR",
+   "layer": "eyes",
+   "group": "eyeR",
+   "label": "Córnea",
+   "anchor": [
+    -3.793,
+    2.643,
+    3.982
+   ],
+   "tris": 300
+  },
+  {
+   "key": "irisL",
+   "layer": "eyes",
+   "group": "eyeL",
+   "label": null,
+   "anchor": [
+    3.934,
+    2.459,
+    3.619
+   ],
+   "tris": 300
+  },
+  {
+   "key": "irisR",
+   "layer": "eyes",
+   "group": "eyeR",
+   "label": "Íris",
+   "anchor": [
+    -3.789,
+    2.472,
+    3.621
+   ],
+   "tris": 298
+  },
+  {
+   "key": "lensL",
+   "layer": "eyes",
+   "group": "eyeL",
+   "label": "Cristalino",
+   "anchor": [
+    4.019,
+    2.447,
+    3.43
+   ],
+   "tris": 200
+  },
+  {
+   "key": "lensR",
+   "layer": "eyes",
+   "group": "eyeR",
+   "label": null,
+   "anchor": [
+    -3.909,
+    2.505,
+    3.412
+   ],
+   "tris": 198
+  },
+  {
+   "key": "extraocular",
+   "layer": "muscles",
+   "group": "head",
+   "label": "Músculos do olho",
+   "anchor": [
+    2.53,
+    3.243,
+    3.876
+   ],
+   "tris": 2499
+  },
+  {
+   "key": "scmL",
+   "layer": "muscles",
+   "group": "head",
+   "label": "Esternocleidomastoideo",
+   "anchor": [
+    5.838,
+    -16.697,
+    -1.032
+   ],
+   "tris": 1798
+  },
+  {
+   "key": "scmR",
+   "layer": "muscles",
+   "group": "head",
+   "label": null,
+   "anchor": [
+    -5.695,
+    -16.715,
+    -1.022
+   ],
+   "tris": 1798
+  },
+  {
+   "key": "digastric",
+   "layer": "muscles",
+   "group": "head",
+   "label": "Digástrico",
+   "anchor": [
+    -4.077,
+    -3.777,
+    -4.156
+   ],
+   "tris": 800
+  },
+  {
+   "key": "splenius",
+   "layer": "muscles",
+   "group": "head",
+   "label": "Esplênio da cabeça",
+   "anchor": [
+    3.397,
+    -11.493,
+    -9.738
+   ],
+   "tris": 1798
+  },
+  {
+   "key": "tongue",
+   "layer": "muscles",
+   "group": "jaw",
+   "label": "Língua",
+   "anchor": [
+    0.83,
+    -5.871,
+    1.891
+   ],
+   "tris": 1498
+  }
+ ],
+ "hands": {
+  "R": [
+   {
+    "key": "palm",
+    "type": "palm"
+   },
+   {
+    "key": "mc1",
+    "type": "seg",
+    "a": 1,
+    "b": 2,
+    "width": 0.5645
+   },
+   {
+    "key": "prox1",
+    "type": "seg",
+    "a": 2,
+    "b": 3,
+    "width": 0.3755
+   },
+   {
+    "key": "prox2",
+    "type": "seg",
+    "a": 5,
+    "b": 6,
+    "width": 0.4785
+   },
+   {
+    "key": "prox3",
+    "type": "seg",
+    "a": 9,
+    "b": 10,
+    "width": 0.5345
+   },
+   {
+    "key": "prox4",
+    "type": "seg",
+    "a": 13,
+    "b": 14,
+    "width": 0.4999
+   },
+   {
+    "key": "prox5",
+    "type": "seg",
+    "a": 17,
+    "b": 18,
+    "width": 0.4091
+   },
+   {
+    "key": "mid2",
+    "type": "seg",
+    "a": 6,
+    "b": 7,
+    "width": 0.3006
+   },
+   {
+    "key": "mid3",
+    "type": "seg",
+    "a": 10,
+    "b": 11,
+    "width": 0.362
+   },
+   {
+    "key": "mid4",
+    "type": "seg",
+    "a": 14,
+    "b": 15,
+    "width": 0.3593
+   },
+   {
+    "key": "mid5",
+    "type": "seg",
+    "a": 18,
+    "b": 19,
+    "width": 0.2698
+   },
+   {
+    "key": "dist1",
+    "type": "seg",
+    "a": 3,
+    "b": 4,
+    "width": 0.2963
+   },
+   {
+    "key": "dist2",
+    "type": "seg",
+    "a": 7,
+    "b": 8,
+    "width": 0.2275
+   },
+   {
+    "key": "dist3",
+    "type": "seg",
+    "a": 11,
+    "b": 12,
+    "width": 0.2188
+   },
+   {
+    "key": "dist4",
+    "type": "seg",
+    "a": 15,
+    "b": 16,
+    "width": 0.189
+   },
+   {
+    "key": "dist5",
+    "type": "seg",
+    "a": 19,
+    "b": 20,
+    "width": 0.1919
+   }
+  ],
+  "L": [
+   {
+    "key": "palm",
+    "type": "palm"
+   },
+   {
+    "key": "mc1",
+    "type": "seg",
+    "a": 1,
+    "b": 2,
+    "width": 0.5741
+   },
+   {
+    "key": "prox1",
+    "type": "seg",
+    "a": 2,
+    "b": 3,
+    "width": 0.3761
+   },
+   {
+    "key": "prox2",
+    "type": "seg",
+    "a": 5,
+    "b": 6,
+    "width": 0.4786
+   },
+   {
+    "key": "prox3",
+    "type": "seg",
+    "a": 9,
+    "b": 10,
+    "width": 0.5382
+   },
+   {
+    "key": "prox4",
+    "type": "seg",
+    "a": 13,
+    "b": 14,
+    "width": 0.5041
+   },
+   {
+    "key": "prox5",
+    "type": "seg",
+    "a": 17,
+    "b": 18,
+    "width": 0.4112
+   },
+   {
+    "key": "mid2",
+    "type": "seg",
+    "a": 6,
+    "b": 7,
+    "width": 0.3047
+   },
+   {
+    "key": "mid3",
+    "type": "seg",
+    "a": 10,
+    "b": 11,
+    "width": 0.3652
+   },
+   {
+    "key": "mid4",
+    "type": "seg",
+    "a": 14,
+    "b": 15,
+    "width": 0.3554
+   },
+   {
+    "key": "mid5",
+    "type": "seg",
+    "a": 18,
+    "b": 19,
+    "width": 0.2672
+   },
+   {
+    "key": "dist1",
+    "type": "seg",
+    "a": 3,
+    "b": 4,
+    "width": 0.2989
+   },
+   {
+    "key": "dist2",
+    "type": "seg",
+    "a": 7,
+    "b": 8,
+    "width": 0.2289
+   },
+   {
+    "key": "dist3",
+    "type": "seg",
+    "a": 11,
+    "b": 12,
+    "width": 0.2189
+   },
+   {
+    "key": "dist4",
+    "type": "seg",
+    "a": 15,
+    "b": 16,
+    "width": 0.1889
+   },
+   {
+    "key": "dist5",
+    "type": "seg",
+    "a": 19,
+    "b": 20,
+    "width": 0.1957
+   }
+  ]
+ }
+}

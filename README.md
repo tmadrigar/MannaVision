@@ -15,13 +15,14 @@
 
 ## 📖 Sobre o Projeto
 
-MannaVision usa a webcam e o **MediaPipe Hands** (Google) para rastrear suas mãos em tempo real e transformá-las em instrumentos de interação. O projeto começou como uma tela de pintura gestual e hoje reúne **três experiências** num só hub:
+MannaVision usa a webcam e o **MediaPipe Hands** (Google) para rastrear suas mãos em tempo real e transformá-las em instrumentos de interação. O projeto começou como uma tela de pintura gestual e hoje reúne **quatro experiências** num só hub:
 
 | Modo | O que faz |
 | :--- | :--- |
 | 🎨 **MannaVision Paint** | Pinte no ar juntando polegar e indicador. Traços suaves em Neon, Fita, Caligrafia, Fagulhas e mais; caleidoscópio de até 12 eixos; tinta que evapora; desfazer/refazer; geração de arte com IA. |
 | ⏱️ **Control Time** | Segure o tempo entre os dedos: abra e feche a pinça para avançar e retroceder na linha do tempo de fenômenos (flor desabrochando, sistema solar, zoom infinito, foguete, som & guitarra) ou de um vídeo seu. |
 | 🌊 **Manipular o Fluido** | Mergulhe as mãos em um fluido simulado na GPU (Navier-Stokes em WebGL). Cada dedo empurra, agita e pinta a tinta; até 10 toques simultâneos com duas mãos. |
+| 🧊 **Cubo do Tempo** | Um vídeo inteiro empilhado num volume 3D (largura × altura × tempo), renderizado por raymarching em WebGL2. Gire o cubo com as duas mãos, viaje no tempo com a pinça e veja o movimento virar fitas no espaço — presente, passado e futuro na mesma cena. |
 
 ![Demonstração do MannaVision em Ação](assets/mannavision_demo.gif)
 
@@ -53,8 +54,17 @@ MannaVision usa a webcam e o **MediaPipe Hands** (Google) para rastrear suas mã
 - Ajustes de força, raio, vorticidade, dissipação, bloom, raios de luz e qualidade (512p a 1024p+).
 - Atalhos: `Espaço` explosão de respingos, `C` limpar, `P` pausar.
 
+### 🧊 Cubo do Tempo
+- Inspirado no [Video Summagator](https://web.cecs.pdx.edu/~fliu/project/summagator/) (Nguyen, Niu & Liu, CHI 2012): o vídeo vira uma textura 3D e é renderizado por **raymarching em WebGL2**. Regiões estáticas ficam translúcidas; o que se move vira fitas opacas ao longo do eixo do tempo.
+- **Plano do presente**: um frame nítido atravessa o cubo; o passado fica atrás (nítido dentro do *rastro*, esmaecido além dele) e o futuro na frente, como holograma.
+- **Gestos**: uma mão em pinça controla o tempo (fechada = início, aberta = fim); duas mãos abertas seguram e giram o cubo (mover = orbitar, girar = rolar, afastar = zoom); pinça + mão aberta arrasta o tempo para os lados. Sem mãos, o cubo gira sozinho. Mouse: arrastar gira, roda aproxima.
+- **Cena**: 5 vídeos incluídos (`public/timecube/`) ou qualquer MP4/WebM/MOV do seu computador (amostrado em 96, 160 ou 256 frames).
+- **Transporte**: play/pause, reiniciar, velocidade (0,25× a 2×), playhead e contador de frame; **Rec** grava o cubo em `.webm`.
+- Ajustes de volume (densidade), realce de movimento, rastro, opacidade do passado/futuro/presente, profundidade do tempo, arestas e qualidade.
+- Atalhos: `Espaço` reproduzir, `←/→` frame a frame (`Shift` pula 10), `Home/End`, `R` recentralizar, `A` rotação automática, `E` arestas.
+
 ### Geral
-- Hub inicial com os 3 modos e 4 temas de interface (Roxo, Azul, Verde, Rosa).
+- Hub inicial com os 4 modos e 4 temas de interface (Roxo, Azul, Verde, Rosa).
 - Seleção de câmera, resolução (640p / 800p / 1280p) e espelhamento.
 - Tudo roda **localmente no navegador** — nenhuma imagem da sua câmera sai do computador (a IA generativa recebe apenas o texto do prompt).
 
@@ -79,7 +89,7 @@ MannaVision usa a webcam e o **MediaPipe Hands** (Google) para rastrear suas mã
 
 ### Pré-requisitos
 - **[Node.js](https://nodejs.org/)** versão 18 ou superior (LTS recomendada) — obrigatório.
-- **Webcam** e um navegador moderno (Chrome ou Edge recomendados; precisa de WebGL para o modo Fluido).
+- **Webcam** e um navegador moderno (Chrome ou Edge recomendados; precisa de WebGL para o modo Fluido e WebGL2 para o Cubo do Tempo).
 - **[Python](https://www.python.org/downloads/)** 3.8+ — **apenas** se quiser a geração de imagens com IA.
 - **[Git](https://git-scm.com/)** para clonar o repositório.
 
@@ -91,16 +101,16 @@ cd MannaVision
 
 ### 2. Execute
 
-#### 🪟 Windows — dois cliques
-Dê um duplo clique em **`iniciar.bat`** (ou rode no terminal). Ele:
+#### 🪟 Windows — dois cliques (Área de Trabalho ou Executável)
+Dê um duplo clique no atalho **MannaVision** na sua **Área de Trabalho** ou no arquivo **`MannaVision.exe`** (ou **`iniciar.bat`**). Ele:
 1. verifica se o Node.js está instalado;
 2. instala as dependências na primeira execução (`npm install`, inclui a cópia dos arquivos do MediaPipe);
 3. inicia o servidor de IA se existir um `handraw-pipe/.env` (veja abaixo);
 4. sobe o MannaVision e **abre o navegador automaticamente** em `http://localhost:5173`.
 
-Para encerrar, feche a janela ou pressione `Ctrl+C`.
+Para encerrar, feche a janela do prompt ou pressione `Ctrl+C`.
 
-> Dica: crie um atalho de `iniciar.bat` na área de trabalho para ter o MannaVision a um clique.
+> Se precisar recriar o atalho da Área de Trabalho no futuro, basta dar duplo clique em **`criar_atalho.bat`**.
 
 #### 🍎 macOS / 🐧 Linux
 ```bash
@@ -140,10 +150,10 @@ python app.py
 
 ## 🧭 Como usar
 
-1. No hub, escolha um dos três modos.
+1. No hub, escolha um dos quatro modos.
 2. Permita o acesso à câmera quando o navegador pedir.
 3. Posicione a mão aberta a ~40–80 cm da câmera, com boa iluminação. O esqueleto da mão aparece em ciano (segunda mão em magenta).
-4. **Paint**: junte polegar e indicador para pintar. **Control Time**: abra/feche a pinça para avançar/voltar. **Fluido**: mova os dedos sobre a tela.
+4. **Paint**: junte polegar e indicador para pintar. **Control Time**: abra/feche a pinça para avançar/voltar. **Fluido**: mova os dedos sobre a tela. **Cubo do Tempo**: pinça com uma mão viaja no tempo; duas mãos abertas giram o cubo.
 5. Use o botão **Hub Principal** para trocar de modo.
 
 ---
@@ -160,14 +170,17 @@ MannaVision/
 │   │   │   ├── HomeHub.tsx         # tela inicial
 │   │   │   ├── HandDrawingApp.tsx  # MannaVision Paint
 │   │   │   ├── ControlTimeApp.tsx  # Control Time
-│   │   │   └── FluidApp.tsx        # Manipular o Fluido
+│   │   │   ├── FluidApp.tsx        # Manipular o Fluido
+│   │   │   └── TimeCubeApp.tsx     # Cubo do Tempo
 │   │   └── utils/
 │   │       ├── brushEngine.ts      # pincéis, simetria, partículas
 │   │       ├── fluidSimulation.ts  # simulação de fluidos em WebGL
+│   │       ├── timeCubeRenderer.ts # textura 3D + raymarching do Cubo do Tempo
 │   │       ├── gestureInterpreter.ts # normalização/suavização da pinça
 │   │       └── timeExperiences.ts  # catálogo de experiências temporais
 │   ├── public/
 │   │   ├── experiences/            # sequências de frames do Control Time
+│   │   ├── timecube/               # vídeos (640p, keyframe/s) e thumbnails do Cubo do Tempo
 │   │   ├── audio/                  # trilhas
 │   │   ├── fluid/                  # textura de dithering do bloom
 │   │   └── mediapipe/              # gerado no npm install (não versionado)
@@ -199,6 +212,8 @@ MannaVision/
 | A mão não é detectada | Melhore a iluminação, aproxime a mão (~50 cm) e mostre a palma para a câmera. Tente a resolução 800p. |
 | Pinça dispara sozinha / não dispara | No Paint, ajuste **Sensibilidade da pinça**; no Control Time, use o **Calibrador**. |
 | Modo Fluido diz "WebGL não é suportado" | Ative a aceleração de hardware do navegador ou atualize o driver de vídeo. |
+| Cubo do Tempo diz "WebGL2 não disponível" ou está lento | Precisa de WebGL2 (Chrome/Edge/Firefox atuais). Se travar, escolha a qualidade **Leve** e 96 frames em **Ajustes**. |
+| Um vídeo meu demora muito para empilhar | Cada frame é buscado por *seek*; vídeos com keyframes espaçados são lentos. Reencode com `ffmpeg -i in.mp4 -an -vf scale=640:-2 -g 30 -keyint_min 30 -sc_threshold 0 out.mp4`. |
 | Botão de IA retorna erro | Verifique o `.env`, se o servidor Python está rodando (janela "Servidor de IA") e se o token tem permissão `write`. O modelo pode levar ~20 s para "acordar" na primeira chamada. |
 | `npm install` falhou | Confirme Node ≥ 18 (`node -v`) e a conexão com a internet; apague `node_modules` e tente de novo. |
 
@@ -207,6 +222,7 @@ MannaVision/
 ## 🙏 Créditos
 - [MediaPipe Hands](https://developers.google.com/mediapipe) — Google.
 - [WebGL Fluid Simulation](https://github.com/PavelDoGreat/WebGL-Fluid-Simulation) — Pavel Dobryakov (MIT), base do modo Fluido.
+- [Video Summagator](https://web.cecs.pdx.edu/~fliu/papers/chi2012.pdf) — Cuong Nguyen, Yuzhen Niu & Feng Liu (Portland State, CHI 2012), conceito do Cubo do Tempo; ensaio [Video Summagator: Decomposing Time](https://interfacelineage.com/video-summagator).
 - [Hugging Face](https://huggingface.co) — API de inferência para a geração de imagens.
 
 ## ✍️ Autor
