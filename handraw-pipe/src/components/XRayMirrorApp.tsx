@@ -6,6 +6,7 @@
 // e a área revelada cresce conforme a mão se aproxima da cabeça.
 
 import React, { useRef, useEffect, useState, useCallback } from 'react';
+import { pickStartupCamera, rememberManualCamera } from '../utils/camera';
 import { FaceLandmarker, HandLandmarker, FilesetResolver } from '@mediapipe/tasks-vision';
 import {
   ArrowLeft, FlipHorizontal, ScanFace, Circle, Square, AlertCircle, Loader2, PanelRightClose, PanelRightOpen, RotateCcw, Zap,
@@ -271,8 +272,14 @@ const XRayMirrorApp: React.FC<XRayMirrorAppProps> = ({ onBackToHub }) => {
 
   useEffect(() => {
     const genRef = cameraGenRef;
-    startCamera(localStorage.getItem('mannavision_camera_id') || undefined, localStorage.getItem('mannavision_resolution') || undefined);
+    const savedResId = localStorage.getItem('mannavision_resolution') || undefined;
+    let cancelled = false;
+    // Padrão: câmera externa; outra só se escolhida manualmente no seletor
+    pickStartupCamera().then((deviceId) => {
+      if (!cancelled) startCamera(deviceId, savedResId);
+    });
     return () => {
+      cancelled = true;
       genRef.current++;
       streamRef.current?.getTracks().forEach((t) => t.stop());
       streamRef.current = null;
@@ -679,7 +686,7 @@ const XRayMirrorApp: React.FC<XRayMirrorAppProps> = ({ onBackToHub }) => {
   };
   useEffect(() => () => { recorderRef.current?.stop(); }, []);
 
-  const handleCameraChange = (id: string) => { setSelectedCameraId(id); localStorage.setItem('mannavision_camera_id', id); startCamera(id, selectedResId); };
+  const handleCameraChange = (id: string) => { setSelectedCameraId(id); rememberManualCamera(id); startCamera(id, selectedResId); };
   const handleResolutionChange = (id: string) => { setSelectedResId(id); localStorage.setItem('mannavision_resolution', id); startCamera(selectedCameraId, id); };
 
   const mirrorStyle: React.CSSProperties = { transform: isMirror ? 'scaleX(-1)' : 'none' };

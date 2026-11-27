@@ -26,8 +26,18 @@ function copyDir(src, dest, label) {
     const from = join(src, name);
     const to = join(dest, name);
     if (!statSync(from).isFile()) continue;
-    const upToDate = existsSync(to) && statSync(to).size === statSync(from).size;
-    if (upToDate) continue;
+    const fromSize = statSync(from).size;
+    const toSize = existsSync(to) ? statSync(to).size : -1;
+    if (toSize === fromSize) continue;
+    // Arquivo menor em node_modules = provavelmente cortado (pasta copiada/movida pela metade).
+    // Um modelo .tflite cortado faz o rastreamento falhar e pode travar o navegador; mantém o de public.
+    if (toSize > fromSize) {
+      console.warn(
+        `[setup-mediapipe] AVISO: ${label}/${name} está menor em node_modules (${fromSize} bytes) que em public (${toSize} bytes); ` +
+          'mantendo o de public. Se o problema persistir, apague node_modules e rode `npm install`.'
+      );
+      continue;
+    }
     cpSync(from, to);
     copied++;
   }

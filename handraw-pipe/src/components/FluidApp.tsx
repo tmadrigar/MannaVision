@@ -1,6 +1,7 @@
 // src/components/FluidApp.tsx
 
 import React, { useRef, useEffect, useState, useCallback } from 'react';
+import { pickStartupCamera, rememberManualCamera } from '../utils/camera';
 import { Hands, Results, NormalizedLandmarkList } from '@mediapipe/hands';
 import { drawConnectors, drawLandmarks } from '@mediapipe/drawing_utils';
 import {
@@ -570,12 +571,16 @@ const FluidApp: React.FC<FluidAppProps> = ({ onBackToHub, themeColor }) => {
 
   // Inicialização e limpeza ao desmontar
   useEffect(() => {
-    const savedDeviceId = localStorage.getItem('mannavision_camera_id') || undefined;
     const savedResId = localStorage.getItem('mannavision_resolution') || undefined;
     const genRef = cameraGenRef;
-    startCamera(savedDeviceId, savedResId);
+    let cancelled = false;
+    // Padrão: câmera externa; outra só se escolhida manualmente no seletor
+    pickStartupCamera().then((deviceId) => {
+      if (!cancelled) startCamera(deviceId, savedResId);
+    });
 
     return () => {
+      cancelled = true;
       genRef.current++;
       if (animFrameIdRef.current) {
         cancelAnimationFrame(animFrameIdRef.current);
@@ -590,7 +595,7 @@ const FluidApp: React.FC<FluidAppProps> = ({ onBackToHub, themeColor }) => {
 
   const handleCameraChange = (newDeviceId: string) => {
     setSelectedCameraId(newDeviceId);
-    localStorage.setItem('mannavision_camera_id', newDeviceId);
+    rememberManualCamera(newDeviceId);
     startCamera(newDeviceId, selectedResId);
   };
 

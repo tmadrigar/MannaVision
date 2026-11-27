@@ -4,6 +4,7 @@
 // O comprimento de cada corda define a nota (corda curta = aguda), ajustada à escala escolhida.
 
 import React, { useRef, useEffect, useState, useCallback } from 'react';
+import { pickStartupCamera, rememberManualCamera } from '../utils/camera';
 import { Hands, Results } from '@mediapipe/hands';
 import {
   ArrowLeft, FlipHorizontal, Sliders, HelpCircle, Music, Undo2, Trash2, Sparkles,
@@ -335,8 +336,14 @@ const AirHarpApp: React.FC<AirHarpAppProps> = ({ onBackToHub, themeColor }) => {
 
   useEffect(() => {
     const genRef = cameraGenRef;
-    startCamera(localStorage.getItem('mannavision_camera_id') || undefined, localStorage.getItem('mannavision_resolution') || undefined);
+    const savedResId = localStorage.getItem('mannavision_resolution') || undefined;
+    let cancelled = false;
+    // Padrão: câmera externa; outra só se escolhida manualmente no seletor
+    pickStartupCamera().then((deviceId) => {
+      if (!cancelled) startCamera(deviceId, savedResId);
+    });
     return () => {
+      cancelled = true;
       genRef.current++;
       if (animFrameIdRef.current) cancelAnimationFrame(animFrameIdRef.current);
       animFrameIdRef.current = null;
@@ -588,7 +595,7 @@ const AirHarpApp: React.FC<AirHarpAppProps> = ({ onBackToHub, themeColor }) => {
 
   const handleCameraChange = (id: string) => {
     setSelectedCameraId(id);
-    localStorage.setItem('mannavision_camera_id', id);
+    rememberManualCamera(id);
     startCamera(id, selectedResId);
   };
   const handleResolutionChange = (id: string) => {

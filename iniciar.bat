@@ -24,7 +24,8 @@ if errorlevel 1 (
 REM ---------------------------------------------------------------
 REM 2) Dependencias do frontend (apenas na primeira execucao)
 REM ---------------------------------------------------------------
-if not exist "node_modules\" (
+REM Verifica o executavel do vite (nao so a pasta): node_modules copiado/movido pode vir sem .bin
+if not exist "node_modules\.bin\vite.cmd" (
     echo [1/3] Instalando dependencias ^(primeira execucao, pode levar alguns minutos^)...
     call npm install
     if errorlevel 1 (
